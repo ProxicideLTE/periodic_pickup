@@ -3,8 +3,7 @@ using System.Collections;
 
 public class Asteroid : EnemyObject {
 	
-	// Instance variables.
-	
+	// Instance variables.			
 	
 	// Use this for initialization
 	void Start () {
@@ -27,6 +26,7 @@ public class Asteroid : EnemyObject {
 		// Detect if the ship collided with this asteroid.
 		if (col.gameObject.name == "Ship") {
 			this.ship.applyDamage(this.collide_dmg);
+			audio.PlayOneShot(this.collision_sound);
 			Destroy(this.gameObject);
 		}
 

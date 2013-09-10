@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{A7ADBE01-C789-FB02-A5D4-F0FDE7EE720B}</ProjectGuid>
+	<ProjectGuid>{0B903752-DB4A-0D1E-0BBB-F27D8BAE9627}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>

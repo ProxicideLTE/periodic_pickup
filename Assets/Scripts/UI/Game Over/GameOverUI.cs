@@ -10,7 +10,7 @@ public class GameOverUI : MonoBehaviour {
 	}	
 		
 	void onMainMenuClick() {
-		Application.LoadLevel("main");
+		Application.LoadLevel("main_menu");
 	}
 	
 	void OnDisable() {

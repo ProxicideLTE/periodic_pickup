@@ -5,11 +5,15 @@ public class EnemyObject : MonoBehaviour {
 
 	// Instance variables.
 	public float					move_speed;
-	
 	public int						collide_dmg;
+	
+	public AudioClip				collision_sound;
 	
 	protected ShipStats				ship;
 	
+	/// <summary>
+	/// Initialize this instance.
+	/// </summary>
 	protected void init() {
 		this.ship = GameObject.FindObjectOfType(typeof (ShipStats)) as ShipStats;	
 	}
@@ -23,5 +27,5 @@ public class EnemyObject : MonoBehaviour {
 	public int getCollideDamage() {
 		return this.collide_dmg;	
 	}
-		
+	
 }
