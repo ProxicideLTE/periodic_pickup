@@ -7,8 +7,6 @@ public class Element : MonoBehaviour {
 	public string				name;
 	public int					element_type;
 	
-	public AudioClip			collision_sound;
-	
 	private PlayerScript		player;
 	
 	/// <summary>
@@ -36,9 +34,6 @@ public class Element : MonoBehaviour {
 		// Add the element to the player's list.
 		this.player.addElementToList(this);
 		print ("Collected: "+ this.name);		
-		
-		// Play sound.
-		audio.PlayOneShot(this.collision_sound);
 		
 		// Destroy object.
 		Destroy(this.gameObject);
