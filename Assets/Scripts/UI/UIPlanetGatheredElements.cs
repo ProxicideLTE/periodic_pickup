@@ -9,6 +9,7 @@ public class UIPlanetGatheredElements : MonoBehaviour {
 	
 	public PlayerScript								player;
 	public tk2dTextMesh								element_name;
+	public GameObject								cube_mesh;
 	
 	private bool									allow_inputs;
 	private int										index;
@@ -16,6 +17,13 @@ public class UIPlanetGatheredElements : MonoBehaviour {
 	
 	private List<Element>							gathered_elements;
 	
+	
+	/// <summary>
+	/// Gets the instance.
+	/// </summary>
+	/// <returns>
+	/// The instance.
+	/// </returns>
 	public static UIPlanetGatheredElements getInstance() {	
 		
 		// Initialize instance for the singleton.
@@ -105,7 +113,9 @@ public class UIPlanetGatheredElements : MonoBehaviour {
 		
 		// Show the first element gathered.
 		this.setElementName(this.gathered_elements[this.index].name);
+		this.cube_mesh.renderer.material = this.gathered_elements[this.index].getElementMaterial();
 		
+		// Determine the element type.
 		if (this.gathered_elements[this.index].element_type == 0)
 			UIPlanetDeductions.getInstance().addEnergyElement();
 		

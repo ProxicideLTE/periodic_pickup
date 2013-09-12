@@ -7,13 +7,15 @@ public class Element : MonoBehaviour {
 	public string				name;
 	public int					element_type;
 	
+	private Material			material;
 	private PlayerScript		player;
-	
+		
 	/// <summary>
 	/// Start this instance.
 	/// </summary>
 	void Start () {
 		this.player = FindObjectOfType(typeof (PlayerScript)) as PlayerScript;
+		this.material = this.gameObject.renderer.material;
 	}
 	
 	/// <summary>
@@ -38,6 +40,16 @@ public class Element : MonoBehaviour {
 		// Destroy object.
 		Destroy(this.gameObject);
 		
+	}
+	
+	/// <summary>
+	/// Gets this element's material.
+	/// </summary>
+	/// <returns>
+	/// The element material.
+	/// </returns>
+	public Material getElementMaterial() {
+		return this.material;	
 	}
 	
 }

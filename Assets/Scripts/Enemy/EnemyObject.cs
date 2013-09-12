@@ -7,8 +7,6 @@ public class EnemyObject : MonoBehaviour {
 	public float					move_speed;
 	public int						collide_dmg;
 	
-	public AudioClip				collision_sound;
-	
 	protected ShipStats				ship;
 	
 	/// <summary>
