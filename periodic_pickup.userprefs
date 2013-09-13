@@ -1,10 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy\Asteroid.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\Enemy\Asteroid.cs" Line="30" Column="3" />
-      <File FileName="Assets\Scripts\Enemy\EnemyObject.cs" Line="8" Column="30" />
-      <File FileName="Assets\Scripts\Player\SpacePlayerState.cs" Line="23" Column="3" />
+      <File FileName="Assets\Scripts\UI\UIPlanet.cs" Line="17" Column="12" />
+      <File FileName="Assets\Scripts\Player\PlayerScript.cs" Line="35" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

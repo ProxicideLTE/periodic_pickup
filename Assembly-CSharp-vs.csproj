@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\Enemy\Asteroid.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyObject.cs" />
      <Compile Include="Assets\Scripts\Planet\Element.cs" />
+     <Compile Include="Assets\Scripts\Planet\ElementTracker.cs" />
      <Compile Include="Assets\Scripts\Planet\PlanetDeductions.cs" />
      <Compile Include="Assets\Scripts\Player\PlanetPlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerScript.cs" />
@@ -63,6 +64,7 @@
      <Compile Include="Assets\Scripts\UI\UIPlanetDeductions.cs" />
      <Compile Include="Assets\Scripts\UI\UIPlanetGatheredElements.cs" />
      <Compile Include="Assets\Scripts\UI\UIPlanetPauseMenu.cs" />
+     <Compile Include="Assets\Scripts\UI\Victory Menu\VictoryMenuUI.cs" />
      <Compile Include="Assets\UI\TK2DROOT\tk2d\Code\Camera\tk2dCamera.cs" />
      <Compile Include="Assets\UI\TK2DROOT\tk2d\Code\Camera\tk2dCameraAnchor.cs" />
      <Compile Include="Assets\UI\TK2DROOT\tk2d\Code\Fonts\tk2dFont.cs" />

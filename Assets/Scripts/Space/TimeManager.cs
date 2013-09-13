@@ -69,6 +69,7 @@ public class TimeManager : MonoBehaviour {
 		
 		// Load the player back to the planet.
 		this.player.changeState(new PlanetPlayerState(this.player));
+		this.player.incrementWeekCount();
 		
 		// Show the player the resources gathered in the run, if any were collected.
 		if (this.player.countGatheredElements() > 0) {

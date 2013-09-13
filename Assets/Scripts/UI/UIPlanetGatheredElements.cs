@@ -7,17 +7,17 @@ public class UIPlanetGatheredElements : MonoBehaviour {
 	// Instance variables.
 	static private UIPlanetGatheredElements			instance;
 	
+	public ElementTracker							element_mgr;
+	public GameObject								cube_mesh;
 	public PlayerScript								player;
 	public tk2dTextMesh								element_name;
-	public GameObject								cube_mesh;
-	
+		
 	private bool									allow_inputs;
 	private int										index;
 	private int										total_elements;
 	
 	private List<Element>							gathered_elements;
-	
-	
+		
 	/// <summary>
 	/// Gets the instance.
 	/// </summary>
@@ -50,16 +50,8 @@ public class UIPlanetGatheredElements : MonoBehaviour {
 			int nextIndex = this.index + 1;
 			
 			// If there are no more elements left in the list.
-			if (nextIndex == this.total_elements) {
-				
-				// Reset.
-				this.player.clearGatheredElements();
-				this.index = 0;				
-				
-				UIPlanet.getInstance().hideGatheredResources();
-				UIPlanet.getInstance().showWeeklyDeductions();
-
-			}
+			if (nextIndex == this.total_elements) 
+				this.showNextScreen();
 			
 			// Otherwise, display the next element collected.
 			else {
@@ -70,17 +62,31 @@ public class UIPlanetGatheredElements : MonoBehaviour {
 		}
 		
 		// Close the collected elements window.
-		if (Input.GetButtonDown("Jump") && this.allow_inputs) {
+		if (Input.GetButtonDown("Jump") && this.allow_inputs) 
+			this.showNextScreen();
+		
+	}
+	
+	/// <summary>
+	/// Shows the next screen.
+	/// </summary>
+	private void showNextScreen() {
+						
+		// If all elements have been gathered, the game is over.
+		if (this.element_mgr.areRemaining()) 
+			Application.LoadLevel("victory_menu");
+		
+		// Otherwise, show the deduction screen.
+		else {
 			
 			// Reset.
 			this.index = 0;
-			this.player.clearGatheredElements();
+			this.player.clearGatheredElements();			
 			
 			// Show the next window.
 			UIPlanet.getInstance().hideGatheredResources();
-			UIPlanet.getInstance().showWeeklyDeductions();
-			
-		}		
+			UIPlanet.getInstance().showWeeklyDeductions();	
+		}
 		
 	}
 	
@@ -104,6 +110,7 @@ public class UIPlanetGatheredElements : MonoBehaviour {
 	public void setGatheredElements(List<Element> e) {
 		this.gathered_elements = e;
 		this.total_elements = e.Count;
+		this.element_mgr.setNumberOfGatheredElements(this.total_elements);	
 	}
 	
 	/// <summary>

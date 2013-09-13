@@ -71,7 +71,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 	
 	public void incrementWeekCount() {
-		this.week_num++;	
+		this.week_num++;
 	}
 	
 }
