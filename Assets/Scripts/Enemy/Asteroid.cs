@@ -31,7 +31,8 @@ public class Asteroid : EnemyObject {
 	
 	// Update is called once per frame
 	void Update () {
-		this.transform.Translate(this.direction * this.move_speed * Time.deltaTime);
+		if (!UIPause.getInstance().isGamePaused())
+			this.transform.Translate(this.direction * this.move_speed * Time.deltaTime);
 	}
 	
 	/// <summary>

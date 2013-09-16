@@ -10,12 +10,14 @@ public class TimeManager : MonoBehaviour {
 	static private TimeManager			instance;
 
 	public float						time_avaiable;
+		
 	public PlayerScript					player;
 	public Planet						home_planet;
 	public SphereCollider				home_planet_collider;
 		
 	private bool						pause;
 	private float						time_left;
+	private int							week_count;
 	
 	/// <summary>
 	/// Gets the instance.
@@ -38,6 +40,7 @@ public class TimeManager : MonoBehaviour {
 		DontDestroyOnLoad(this);
 		this.pause = true;
 		this.time_left = this.time_avaiable;
+		this.week_count = 0;
 	}
 	
 	// Update is called once per frame
@@ -128,5 +131,19 @@ public class TimeManager : MonoBehaviour {
 	public void resumeTimer() {
 		this.pause = false;	
 	}	
+	
+	/// <summary>
+	/// Sets the week count.
+	/// </summary>
+	public void setWeekCount() {
+		this.week_count ++;	
+	}
+	
+	/// <summary>
+	/// Gets the week count.
+	/// </summary>
+	public int getWeekCount() {
+		return this.week_count;
+	}
 	
 }

@@ -47,5 +47,25 @@ public class ElementTracker : MonoBehaviour {
 		return this.total_elements == this.gather_elements;
 	}
 	
+	/// <summary>
+	/// Counts all elements.
+	/// </summary>
+	/// <returns>
+	/// The all elements.
+	/// </returns>
+	public int countAllElements() {
+		return this.total_elements;	
+	}
+	
+	/// <summary>
+	/// Counts the collected elements.
+	/// </summary>
+	/// <returns>
+	/// The collected elements.
+	/// </returns>
+	public int countCollectedElements() {
+		return this.gather_elements;	
+	}
+	
 }
 

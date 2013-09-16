@@ -11,6 +11,7 @@ public class UIPlanetGatheredElements : MonoBehaviour {
 	public GameObject								cube_mesh;
 	public PlayerScript								player;
 	public tk2dTextMesh								element_name;
+	public tk2dTextMesh								element_type;
 		
 	private bool									allow_inputs;
 	private int										index;
@@ -99,6 +100,10 @@ public class UIPlanetGatheredElements : MonoBehaviour {
 	private void setElementName(string name) {
 		this.element_name.text = name;
 		this.element_name.Commit();
+		
+		this.element_type.text = this.gathered_elements[this.index].getElementType();
+		this.element_type.Commit();
+		
 	}
 	
 	/// <summary>

@@ -13,6 +13,9 @@ public class PlanetPlayerState : PlayerState {
 		this.setup();
 	}
 	
+	/// <summary>
+	/// Setup this instance.
+	/// </summary>
 	private void setup() {
 		
 		Debug.Log("Entering: "+ this.player.recent_planet.name);
@@ -34,7 +37,9 @@ public class PlanetPlayerState : PlayerState {
 		
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+	/// Update this instance.
+	/// </summary>
 	public override void update () {
 		this.updateControls();
 		this.player.planet_model.transform.localRotation = Quaternion.identity;
@@ -44,30 +49,38 @@ public class PlanetPlayerState : PlayerState {
 	/// Updates the controls.
 	/// </summary>
 	private void updateControls() {
-
-		this.walk_path = 0;
 		
-		// Translating the player around the planet.
-		if (Input.GetButton("Vertical") && !UIPlanet.getInstance().isMovementDisabled()) {
-			this.walk_path = this.movement_speed / this.planet_radius;
-			this.player.centroid_planet.transform.Rotate(walk_path * Time.deltaTime * Input.GetAxis("Vertical"), 0, 0);
+		// Pause game.
+		if (Input.GetKeyDown(KeyCode.Escape))
+			UIPause.getInstance().pauseGame();
+		
+		if (!UIPause.getInstance().isGamePaused()) {
+		
+			this.walk_path = 0;
+			
+			// Translating the player around the planet.
+			if (Input.GetButton("Vertical") && !UIPlanet.getInstance().isMovementDisabled()) {
+				this.walk_path = this.movement_speed / this.planet_radius;
+				this.player.centroid_planet.transform.Rotate(walk_path * Time.deltaTime * Input.GetAxis("Vertical"), 0, 0);
+			}
+			
+			if (Input.GetButton("Horizontal") && !UIPlanet.getInstance().isMovementDisabled()) {
+				this.walk_path = this.movement_speed / this.planet_radius;
+				this.player.centroid_planet.transform.Rotate(0, 0, walk_path * Time.deltaTime * -Input.GetAxis("Horizontal"));	
+			}
+	
+			// Turn the player.
+			if(Input.GetAxis("Mouse X") < 0 && !UIPlanet.getInstance().isMovementDisabled()) 
+	    		this.player.centroid_planet.transform.Rotate(0, -this.turn_speed, 0);
+			
+			if(Input.GetAxis("Mouse X") > 0 && !UIPlanet.getInstance().isMovementDisabled()) 
+	    		this.player.centroid_planet.transform.Rotate(0, this.turn_speed, 0);				
+			
+			// Exit the planet.
+			if(Input.GetButtonDown("Jump") && !UIPlanet.getInstance().isMovementDisabled()) 
+				this.player.changeState(new SpacePlayerState(this.player));
+			
 		}
-		
-		if (Input.GetButton("Horizontal") && !UIPlanet.getInstance().isMovementDisabled()) {
-			this.walk_path = this.movement_speed / this.planet_radius;
-			this.player.centroid_planet.transform.Rotate(0, 0, walk_path * Time.deltaTime * -Input.GetAxis("Horizontal"));	
-		}
-
-		// Turn the player.
-		if(Input.GetAxis("Mouse X") < 0 && !UIPlanet.getInstance().isMovementDisabled()) 
-    		this.player.centroid_planet.transform.Rotate(0, -this.turn_speed, 0);
-		
-		if(Input.GetAxis("Mouse X") > 0 && !UIPlanet.getInstance().isMovementDisabled()) 
-    		this.player.centroid_planet.transform.Rotate(0, this.turn_speed, 0);				
-		
-		// Exit the planet.
-		if(Input.GetButtonDown("Jump") && !UIPlanet.getInstance().isMovementDisabled()) 
-			this.player.changeState(new SpacePlayerState(this.player));
 		
 	}
 	

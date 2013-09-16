@@ -62,16 +62,31 @@ public class PlayerScript : MonoBehaviour {
 		this.gathered_elements.Clear();
 	}
 	
+	/// <summary>
+	/// Counts the number of gathered elements.
+	/// </summary>
+	/// <returns>
+	/// The gathered elements.
+	/// </returns>
 	public int countGatheredElements() {
 		return this.gathered_elements.Count;
 	}
 	
+	/// <summary>
+	/// Gets the gathered elements.
+	/// </summary>
+	/// <returns>
+	/// The gathered elements.
+	/// </returns>
 	public List<Element> getGatheredElements() {
 		return this.gathered_elements;	
 	}
 	
+	/// <summary>
+	/// Increments the week count.
+	/// </summary>
 	public void incrementWeekCount() {
-		this.week_num++;
+		TimeManager.getInstance().setWeekCount();
 	}
 	
 }

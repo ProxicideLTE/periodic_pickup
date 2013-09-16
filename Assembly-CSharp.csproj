@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Space\TimeManager.cs" />
      <Compile Include="Assets\Scripts\UI\Game Over\GameOverUI.cs" />
      <Compile Include="Assets\Scripts\UI\Main Menu\MainMenuUI.cs" />
+     <Compile Include="Assets\Scripts\UI\UIPause.cs" />
      <Compile Include="Assets\Scripts\UI\UIPlanet.cs" />
      <Compile Include="Assets\Scripts\UI\UIPlanetDeductions.cs" />
      <Compile Include="Assets\Scripts\UI\UIPlanetGatheredElements.cs" />

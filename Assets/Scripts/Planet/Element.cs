@@ -7,6 +7,8 @@ public class Element : MonoBehaviour {
 	public string				name;
 	public int					element_type;
 	
+	private string[]			elemental_type;
+	
 	private Material			material;
 	private PlayerScript		player;
 		
@@ -16,6 +18,9 @@ public class Element : MonoBehaviour {
 	void Start () {
 		this.player = FindObjectOfType(typeof (PlayerScript)) as PlayerScript;
 		this.material = this.gameObject.renderer.material;
+		
+		this.elemental_type = new string[] {"Energy Source", "Gas", "Metal", "Metalloid"};
+		
 	}
 	
 	/// <summary>
@@ -50,6 +55,16 @@ public class Element : MonoBehaviour {
 	/// </returns>
 	public Material getElementMaterial() {
 		return this.material;	
+	}
+	
+	/// <summary>
+	/// Gets the type of the element.
+	/// </summary>
+	/// <returns>
+	/// The element type.
+	/// </returns>
+	public string getElementType() {
+		return this.elemental_type[this.element_type];
 	}
 	
 }

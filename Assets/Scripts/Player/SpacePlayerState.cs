@@ -36,19 +36,27 @@ public class SpacePlayerState : PlayerState {
 		
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+	/// Update this instance.
+	/// </summary>
 	public override void update () {
 		
-		// As long as the ship is alive, move it.
-		if (this.ship.isShipAlive()) {
-			this.moveShip();
-			if (Input.GetButton("Horizontal"))		this.yawShip();
-			if (Input.GetButton("Vertical"))		this.pitchShip();
-		}
+		// Pause game.
+		if (Input.GetKeyDown(KeyCode.Escape))
+			UIPause.getInstance().pauseGame();		
 		
-		// Otherwise game over.
-		else 
-			Application.LoadLevel("game_over");
+		if (!UIPause.getInstance().isGamePaused()) {
+			// As long as the ship is alive, move it.
+			if (this.ship.isShipAlive()) {
+				this.moveShip();
+				if (Input.GetButton("Horizontal"))		this.yawShip();
+				if (Input.GetButton("Vertical"))		this.pitchShip();
+			}
+			
+			// Otherwise game over.
+			else 
+				Application.LoadLevel("game_over");
+		}
 		
 	}
 	
