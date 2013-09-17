@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class ElementTracker : MonoBehaviour {
 	
 	// Instance variables.
+	
 	private int 					total_elements;
 	private int						gather_elements;
 	

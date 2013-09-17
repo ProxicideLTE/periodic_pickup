@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class GalaxyManager : MonoBehaviour {
 	
 	// Instance variables.
+	public AudioClip					sfx_warning;
 	public GameObject					window;
-	
 	public tk2dTextMesh					lbl_time;
 	
 	public float						time_available;
@@ -62,7 +62,8 @@ public class GalaxyManager : MonoBehaviour {
 	/// </param>
 	void OnTriggerExit(Collider c) {
 		this.exitingVolume();
-		print ("Exiting the volume");	
+		audio.PlayOneShot(this.sfx_warning);
+		print ("Exiting the volume");
 	}
 	
 	/// <summary>
@@ -74,7 +75,7 @@ public class GalaxyManager : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		this.enteringVolume();
 		this.resetTimer();
-		print ("Entering the volume");	
+		print ("Entering the volume");
 	}
 	
 	/// <summary>

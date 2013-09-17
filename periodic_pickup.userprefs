@@ -2,8 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Space\GalaxyManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\SpacePlayerState.cs" Line="48" Column="39" />
-      <File FileName="Assets\Scripts\Space\GalaxyManager.cs" Line="109" Column="5" />
+      <File FileName="Assets\Scripts\Space\GalaxyManager.cs" Line="8" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -6,6 +6,8 @@ public class UIPause : MonoBehaviour {
 	// Instance variables.
 	static private UIPause			instance;	
 	
+	public AudioClip				sfx_popup;
+	
 	public GameObject				pause_screen;
 	public GameObject				win_controls;
 	public GameObject				win_pause;
@@ -66,6 +68,7 @@ public class UIPause : MonoBehaviour {
 	/// Enter this instance.
 	/// </summary>
 	private void enter() {
+		audio.PlayOneShot(this.sfx_popup);
 		this.pause_screen.SetActive(true);
 		this.is_pause = true;
 		this.pause_camera.enabled = true;

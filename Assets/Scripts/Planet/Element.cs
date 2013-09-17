@@ -18,9 +18,7 @@ public class Element : MonoBehaviour {
 	void Start () {
 		this.player = FindObjectOfType(typeof (PlayerScript)) as PlayerScript;
 		this.material = this.gameObject.renderer.material;
-		
 		this.elemental_type = new string[] {"Energy Source", "Gas", "Metal", "Metalloid"};
-		
 	}
 	
 	/// <summary>
@@ -40,7 +38,7 @@ public class Element : MonoBehaviour {
 		
 		// Add the element to the player's list.
 		this.player.addElementToList(this);
-		print ("Collected: "+ this.name);		
+		print ("Collected: "+ this.name);
 		
 		// Destroy object.
 		Destroy(this.gameObject);
