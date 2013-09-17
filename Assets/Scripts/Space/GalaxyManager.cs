@@ -5,75 +5,114 @@ using System.Collections.Generic;
 public class GalaxyManager : MonoBehaviour {
 	
 	// Instance variables.
-	static private GalaxyManager		instance;
+	public GameObject					window;
 	
-	public Planet						recent_planet;
-		
-	private GameObject					planet_gameobj;
-	private Vector3						loading_pos;
+	public tk2dTextMesh					lbl_time;
 	
-	/// <summary>
-	/// Gets the instance of the GalaxyManager singleton.
-	/// </summary>
-	/// <returns>
-	/// The instance of this GalaxyManager singleton.
-	/// </returns>
-	public static GalaxyManager getInstance() {
+	public float						time_available;
 		
-		// Initialize instance for the singleton.
-		if (instance == null)
-			instance = GameObject.FindObjectOfType(typeof(GalaxyManager)) as GalaxyManager;
-		
-		return instance;
-		
-	}
+	private PlayerScript				player;
+	
+	private bool						in_volume;
+	private float						time;
 	
 	/// <summary>
 	/// Start this instance.
 	/// </summary>
 	void Start () {
-		DontDestroyOnLoad(this);
+		
+		// Instantiate variables.
+		this.window.SetActive(false);
+		this.player = FindObjectOfType(typeof (PlayerScript)) as PlayerScript;
+		this.in_volume = true;
+		this.time = this.time_available;
+		
+		this.lbl_time.text = this.time+ " s";
+		this.lbl_time.Commit();
+		
 	}
 	
 	/// <summary>
-	/// Load the planet level.
+	/// Update this instance.
 	/// </summary>
-	/// <param name='name'>
-	/// Planet object that will contain the scene to load.
+	void Update() {
+		
+		// If the player is out of the volume and the game is not paused. 
+		if (!this.in_volume && !UIPause.getInstance().isGamePaused()) {
+			
+			// Decrement time.
+			this.time -= Time.deltaTime;
+			
+			// Update label.
+			this.lbl_time.text = this.time+ " s";
+			this.lbl_time.Commit();
+			
+			if (this.time <= 0)
+				Application.LoadLevel("game_over");
+			
+		}
+		
+	}
+	
+	/// <summary>
+	/// Raises the trigger exit event.
+	/// </summary>
+	/// <param name='c'>
+	/// C.
 	/// </param>
-	public void goToPlanet(Planet p) {
-		
-		// Remember the planet so that player can exit from that planet.
-		this.recent_planet = p;
-		
-		// Calculate new position that the player will load at when leaving.
-		this.loading_pos = this.calculateLoadingPosition();
-		
-		// Resume timer.
-		TimeManager.getInstance().resumeTimer();
-		
-	}
-	
-	public Vector3 getLoadingPosition() {
-		return loading_pos;
+	void OnTriggerExit(Collider c) {
+		this.exitingVolume();
+		print ("Exiting the volume");	
 	}
 	
 	/// <summary>
-	/// Load the player in space on the planet they recently visited.
+	/// Raises the trigger enter event.
 	/// </summary>
-	/// <returns>
-	/// A vector position that the player will hold.
-	/// </returns>
-	public Vector3 calculateLoadingPosition() {
+	/// <param name='c'>
+	/// C.
+	/// </param>
+	void OnTriggerEnter(Collider c) {
+		this.enteringVolume();
+		this.resetTimer();
+		print ("Entering the volume");	
+	}
+	
+	/// <summary>
+	/// Set a flag that the player is outside the trigger volume.
+	/// </summary>
+	public void exitingVolume() {
+		this.in_volume = false;
+		this.showWarning();
 		
-		//
-		this.planet_gameobj = recent_planet.gameObject;
-		SphereCollider col = this.planet_gameobj.GetComponent<SphereCollider>();
-		
-		// Position the player above the planet's north pole.
-		float planet_radius = col.radius * this.planet_gameobj.transform.lossyScale.x;
-		return new Vector3(this.planet_gameobj.transform.position.x, planet_radius, this.planet_gameobj.transform.position.z);
-		
+	}
+	
+	/// <summary>
+	/// Set a flag that the player is in the trigger volume
+	/// </summary>
+	public void enteringVolume() {
+		this.in_volume = true;
+		this.hideWarning();
+	}
+	
+	/// <summary>
+	/// Shows the warning.
+	/// </summary>
+	private void showWarning() {
+		this.window.SetActive(true);
+	}
+	
+	/// <summary>
+	/// Hides the warning.
+	/// </summary>
+	private void hideWarning() {
+		this.window.SetActive(false);	
+	}
+	
+	/// <summary>
+	/// Resets the timer.
+	/// </summary>
+	public void resetTimer() {
+		this.time = this.time_available;	
 	}
 	
 }

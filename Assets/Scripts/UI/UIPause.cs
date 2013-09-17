@@ -7,10 +7,13 @@ public class UIPause : MonoBehaviour {
 	static private UIPause			instance;	
 	
 	public GameObject				pause_screen;
+	public GameObject				win_controls;
+	public GameObject				win_pause;
 	public Camera					pause_camera;
 	
 	public tk2dUIItem				btn_resume;
 	public tk2dUIItem				btn_main_menu;
+	public tk2dUIItem				btn_controls;
 	
 	public tk2dTextMesh				lbl_week;
 	public tk2dTextMesh				lbl_time;
@@ -36,7 +39,8 @@ public class UIPause : MonoBehaviour {
 	void Start() {
 		this.is_pause = false;
 		this.pause_camera.enabled = false;
-		
+		this.pause_screen.SetActive(false);
+		this.win_controls.SetActive(false);
 		this.elements = GameObject.FindObjectOfType(typeof (ElementTracker)) as ElementTracker;
 		
 	}
@@ -47,6 +51,7 @@ public class UIPause : MonoBehaviour {
 	void OnEnable() {
 		this.btn_resume.OnClick += onResumeClicked;
 		this.btn_main_menu.OnClick += onMainMenuClick;
+		this.btn_controls.OnClick += onControlsClick;
 	}
 	
 	/// <summary>
@@ -61,6 +66,7 @@ public class UIPause : MonoBehaviour {
 	/// Enter this instance.
 	/// </summary>
 	private void enter() {
+		this.pause_screen.SetActive(true);
 		this.is_pause = true;
 		this.pause_camera.enabled = true;
 		TimeManager.getInstance().pauseTimer();
@@ -88,6 +94,9 @@ public class UIPause : MonoBehaviour {
 	/// Leave this instance.
 	/// </summary>
 	private void leave() {
+		this.pause_screen.SetActive(false);
+		this.win_controls.SetActive(false);
+		this.win_pause.SetActive(true);
 		this.is_pause = false;
 		this.pause_camera.enabled = false;
 		TimeManager.getInstance().resumeTimer();
@@ -119,12 +128,18 @@ public class UIPause : MonoBehaviour {
 		Application.LoadLevel("main_menu");	
 	}
 	
+	void onControlsClick() {
+		this.win_controls.SetActive(true);
+		this.win_pause.SetActive(false);
+	}
+	
 	/// <summary>
 	/// Raises the disable event.
 	/// </summary>
 	void OnDisable() {
 		this.btn_resume.OnClick -= onResumeClicked;
 		this.btn_main_menu.OnClick -= onMainMenuClick;
+		this.btn_controls.OnClick -= onControlsClick;
 	}	
 	
 }

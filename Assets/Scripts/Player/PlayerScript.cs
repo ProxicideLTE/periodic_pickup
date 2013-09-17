@@ -12,6 +12,8 @@ public class PlayerScript : MonoBehaviour {
 	public ShipStats				ship;
 	public SphereCollider			recent_planet_collider;
 	
+	public bool						is_exploring;	
+	
 	private int						week_num;
 	
 	private PlayerState				state;
@@ -21,6 +23,7 @@ public class PlayerScript : MonoBehaviour {
 	void Start () {
 		
 		// Instantiate variables.
+		this.is_exploring = false;
 		this.week_num = 0;
 		this.state = new PlanetPlayerState(this);
 		this.gathered_elements = new List<Element>();

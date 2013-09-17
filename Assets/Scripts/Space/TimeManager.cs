@@ -47,7 +47,9 @@ public class TimeManager : MonoBehaviour {
 	void Update () {
 		
 		// As long as the timer isn't paused, resume the countdown.
-		if (!pause) {
+		if (!pause && this.player.is_exploring) {
+			
+			// Decrease timer.
 			this.time_left -= Time.deltaTime;
 			
 			if (this.time_left <= 0) 
@@ -61,6 +63,8 @@ public class TimeManager : MonoBehaviour {
 	/// Loads the home planet when the timer reaches zero.
 	/// </summary>
 	private void loadHomePlanet() {
+		
+		this.player.is_exploring = false;
 		
 		// Set timer.
 		this.pauseTimer();

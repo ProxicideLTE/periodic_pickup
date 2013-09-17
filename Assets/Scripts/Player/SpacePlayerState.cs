@@ -15,6 +15,8 @@ public class SpacePlayerState : PlayerState {
 	/// </summary>
 	private void setup() {
 		
+		this.player.is_exploring = true;
+		
 		// If the recent planet is the home planet, start the timer.
 		TimeManager.getInstance().resumeTimer();
 		
