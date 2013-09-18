@@ -10,7 +10,8 @@ public class TimeManager : MonoBehaviour {
 	static private TimeManager			instance;
 
 	public float						time_avaiable;
-		
+	
+	public AudioClip					bgm;
 	public PlayerScript					player;
 	public Planet						home_planet;
 	public SphereCollider				home_planet_collider;

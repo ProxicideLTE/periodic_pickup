@@ -16,6 +16,8 @@ public class SpacePlayerState : PlayerState {
 	private void setup() {
 		
 		this.player.is_exploring = true;
+		MusicManager.getInstance().stopMusic();
+		MusicManager.getInstance().playMusic(TimeManager.getInstance().bgm);
 		
 		// If the recent planet is the home planet, start the timer.
 		TimeManager.getInstance().resumeTimer();

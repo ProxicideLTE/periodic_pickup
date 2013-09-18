@@ -19,6 +19,8 @@ public class PlanetPlayerState : PlayerState {
 	private void setup() {
 		
 		Debug.Log("Entering: "+ this.player.recent_planet.name);
+		MusicManager.getInstance().stopMusic();
+		MusicManager.getInstance().playMusic(this.player.recent_planet.bgm);
 		
 		// Initialize variables.
 		this.movement_speed = 15;

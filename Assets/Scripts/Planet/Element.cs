@@ -38,6 +38,7 @@ public class Element : MonoBehaviour {
 		
 		// Add the element to the player's list.
 		this.player.addElementToList(this);
+		MusicManager.getInstance().playPickup();
 		print ("Collected: "+ this.name);
 		
 		// Destroy object.

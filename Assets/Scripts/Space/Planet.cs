@@ -5,6 +5,8 @@ public class Planet : MonoBehaviour {
 	
 	// Instance variables.
 	public string				name;
+	
+	public AudioClip			bgm;
 	public SphereCollider		planet_collider;
 	
 	private PlayerScript		player;
