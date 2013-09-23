@@ -31,7 +31,7 @@ public class MusicManager : MonoBehaviour {
 		if (clip != null) {
 			audio.clip = clip;
 			audio.loop = true;
-			audio.volume = 0.5f;
+			audio.volume = 0.75f;
 			audio.Play();
 		}
 	}

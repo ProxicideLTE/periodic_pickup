@@ -12,12 +12,16 @@ public class ShipStats : MonoBehaviour {
 	
 	public Transform		trans;
 	public Transform		ship_camera;
+	public UISpace			ui;
 	
 	private bool			is_alive;
+	
+	private int				max_hp;
 	
 	void Start() {
 		DontDestroyOnLoad(this);
 		this.is_alive = true;
+		this.max_hp = this.hp;
 	}
 	
 	/// <summary>
@@ -34,6 +38,11 @@ public class ShipStats : MonoBehaviour {
 		// Check if the player is still alive.
 		if (this.hp <= 0) {
 			this.is_alive = false;	
+		}
+		
+		// Otherwise update the health bar.
+		else {
+			this.ui.setHealthBar((float)this.hp/(float)this.max_hp);
 		}
 		
 	}

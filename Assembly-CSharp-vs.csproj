@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\UI\UIPlanetDeductions.cs" />
      <Compile Include="Assets\Scripts\UI\UIPlanetGatheredElements.cs" />
      <Compile Include="Assets\Scripts\UI\UIPlanetPauseMenu.cs" />
+     <Compile Include="Assets\Scripts\UI\UISpace.cs" />
      <Compile Include="Assets\Scripts\UI\Victory Menu\VictoryMenuUI.cs" />
      <Compile Include="Assets\UI\TK2DROOT\tk2d\Code\Camera\tk2dCamera.cs" />
      <Compile Include="Assets\UI\TK2DROOT\tk2d\Code\Camera\tk2dCameraAnchor.cs" />
