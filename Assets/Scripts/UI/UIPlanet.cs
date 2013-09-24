@@ -9,8 +9,10 @@ public class UIPlanet : MonoBehaviour {
 	public GameObject				ui;
 	public GameObject				ui_gathered;
 	public GameObject				ui_deductions;
+	public GameObject				ui_planet_tutorial;
 	
 	private bool					disable_movement;
+	private bool					show_tutorial;
 	
 	public static UIPlanet getInstance() {	
 		
@@ -26,6 +28,24 @@ public class UIPlanet : MonoBehaviour {
 	void Start () {
 		DontDestroyOnLoad(this);
 		this.disable_movement = false;
+		this.show_tutorial = true;
+	}
+	
+	void Update() {
+		
+		if (this.show_tutorial) {
+			
+			this.showPlanetUI();
+			this.ui_planet_tutorial.SetActive(true);
+			
+			if (Input.GetKey(KeyCode.Space)) {
+				this.show_tutorial = false;
+				this.hidePlanetUI();
+				this.ui_planet_tutorial.SetActive(false);
+			}
+			
+		}
+		
 	}
 	
 	public void showPlanetUI() {

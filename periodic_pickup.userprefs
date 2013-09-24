@@ -1,9 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\ShipStats.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UI\UIPlanetGatheredElements.cs">
     <Files>
-      <File FileName="Assets\Scripts\UI\UISpace.cs" Line="23" Column="2" />
-      <File FileName="Assets\Scripts\Player\ShipStats.cs" Line="42" Column="3" />
+      <File FileName="Assets\Scripts\UI\UISpace.cs" Line="28" Column="2" />
+      <File FileName="Assets\Scripts\UI\UIPlanet.cs" Line="33" Column="2" />
+      <File FileName="Assets\Scripts\Player\PlanetPlayerState.cs" Line="22" Column="42" />
+      <File FileName="Assets\Scripts\UI\UIPlanetGatheredElements.cs" Line="65" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
