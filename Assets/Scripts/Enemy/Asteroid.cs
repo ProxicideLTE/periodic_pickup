@@ -6,6 +6,8 @@ public class Asteroid : EnemyObject {
 	// Instance variables.
 	private Vector3				direction;
 	
+	private bool				should_move;
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -27,12 +29,19 @@ public class Asteroid : EnemyObject {
 		else if (type == 3)
 			this.direction = Vector3.back;		
 		
+		this.should_move = true;
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!UIPause.getInstance().isGamePaused())
+					
+		if (UIPause.getInstance().isGamePaused() || UISpace.getInstance().isMovementDisabled())
+			this.should_move = false;
+		
+		if (this.should_move)
 			this.transform.Translate(this.direction * this.move_speed * Time.deltaTime);
+		
 	}
 	
 	/// <summary>

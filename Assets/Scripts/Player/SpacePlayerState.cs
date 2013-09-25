@@ -18,6 +18,7 @@ public class SpacePlayerState : PlayerState {
 		this.player.is_exploring = true;
 		MusicManager.getInstance().stopMusic();
 		MusicManager.getInstance().playMusic(TimeManager.getInstance().bgm);
+		UISpace.getInstance().disableMovement();
 		
 		// If the recent planet is the home planet, start the timer.
 		TimeManager.getInstance().resumeTimer();
@@ -49,17 +50,22 @@ public class SpacePlayerState : PlayerState {
 		if (Input.GetKeyDown(KeyCode.Escape))
 			UIPause.getInstance().pauseGame();		
 		
+		// Check to see if the game is paused or not.
 		if (!UIPause.getInstance().isGamePaused()) {
+			
 			// As long as the ship is alive, move it.
 			if (this.ship.isShipAlive()) {
-				this.moveShip();
-				if (Input.GetButton("Horizontal"))		this.yawShip();
-				if (Input.GetButton("Vertical"))		this.pitchShip();
+				if (!UISpace.getInstance().isMovementDisabled()) {
+					this.moveShip();
+					if (Input.GetButton("Horizontal"))		this.yawShip();
+					if (Input.GetButton("Vertical"))		this.pitchShip();
+				}
 			}
 			
 			// Otherwise game over.
 			else 
 				Application.LoadLevel("game_over");
+			
 		}
 		
 	}

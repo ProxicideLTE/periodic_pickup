@@ -38,7 +38,7 @@ public class UIPlanet : MonoBehaviour {
 			this.showPlanetUI();
 			this.ui_planet_tutorial.SetActive(true);
 			
-			if (Input.GetKey(KeyCode.Space)) {
+			if (Input.GetKey(KeyCode.E)) {
 				this.show_tutorial = false;
 				this.hidePlanetUI();
 				this.ui_planet_tutorial.SetActive(false);
