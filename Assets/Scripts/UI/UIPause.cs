@@ -20,6 +20,10 @@ public class UIPause : MonoBehaviour {
 	public tk2dTextMesh				lbl_week;
 	public tk2dTextMesh				lbl_time;
 	public tk2dTextMesh				lbl_elements;
+	public tk2dTextMesh				lbl_energy;
+	public tk2dTextMesh				lbl_gas;
+	public tk2dTextMesh				lbl_metal;
+	public tk2dTextMesh				lbl_metalloid;		
 	
 	private ElementTracker			elements;
 	
@@ -90,6 +94,18 @@ public class UIPause : MonoBehaviour {
 		
 		this.lbl_elements.text = "Elements Found: "+ this.elements.countCollectedElements() + "/" +this.elements.countAllElements();
 		this.lbl_elements.Commit();
+		
+		this.lbl_energy.text = "Energy Sources: "+ UIPlanetDeductions.getInstance().enegry_amount;
+		this.lbl_energy.Commit();
+		
+		this.lbl_gas.text = "Gas Units: "+ UIPlanetDeductions.getInstance().gas_amount;
+		this.lbl_gas.Commit();
+		
+		this.lbl_metal.text = "Metals: "+ UIPlanetDeductions.getInstance().metal_amount;
+		this.lbl_metal.Commit();
+		
+		this.lbl_metalloid.text = "Metalloids: "+ UIPlanetDeductions.getInstance().metalloid_amount;
+		this.lbl_metalloid.Commit();		
 		
 	}
 	

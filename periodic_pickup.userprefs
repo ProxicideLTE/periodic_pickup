@@ -1,6 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UI\UIPause.cs">
+    <Files>
+      <File FileName="Assets\Scripts\UI\UIPause.cs" Line="101" Column="81" />
+      <File FileName="Assets\Scripts\UI\UIPlanetDeductions.cs" Line="18" Column="31" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
